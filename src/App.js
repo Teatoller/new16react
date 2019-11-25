@@ -1,31 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
 import StudentForm from "./components/StudentForm";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      hasError: false
-    };
-  }
-
-  componentDidCatch() {
-    this.setState({
-      hasError: true
-    });
-  }
-
   render() {
-    if (this.state.hasError) {
-      return <h1>"Error Message: Something went wrong</h1>;
-    } else {
-      return (
-        <div className="App">
+    return (
+      <div className="App">
+        <ErrorBoundary>
           <StudentForm />
-        </div>
-      );
-    }
+        </ErrorBoundary>
+      </div>
+    );
   }
 }
 
